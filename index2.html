@@ -77,9 +77,8 @@
                 position: latlng,
                 map: map
               });
-              infowindow.setContent(results[1].formatted_address);
+              infowindow.setContent(results[1].city);
               infowindow.open(map, marker);
-              console.log(results[1]);
             } else {
               window.alert('No results found');
             }
