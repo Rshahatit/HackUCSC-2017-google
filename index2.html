@@ -67,8 +67,8 @@
       
       function get_country_from_geo(results) {
        for (i =0; i < results.address_components.size(); i++) {
-          if results.address_components[i].types[0] === "country" {
-              return results.address_components[i].short_name;
+          if results[1].address_components[i].types[0] === "country" {
+              return results[1].address_components[i].short_name;
           }
        }
      }
