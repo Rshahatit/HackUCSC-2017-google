@@ -64,6 +64,14 @@
           geocodeLatLng(geocoder, map, infowindow);
         });
       }
+      
+      function get_country_from_geo(results) {
+       for (i =0; i < results.address_components.size(); i++) {
+          if results.address_components[i].types[0] === "country" {
+              return results.address_components[i].short_name;
+          }
+       }
+     }
 
       function geocodeLatLng(geocoder, map, infowindow) {
         var input = document.getElementById('latlng').value;
@@ -79,7 +87,8 @@
               });
               infowindow.setContent(results[1].city);
               infowindow.open(map, marker);
-              console.log(results[1]);
+              var country_code = get_country_from_geo(results);
+              console.log(country_code);
             } else {
               window.alert('No results found');
             }
@@ -88,6 +97,7 @@
           }
         });
       }
+      
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPo_E3Xlto8OwaCWxBi6YJBnscrx21TY&callback=initMap">
